@@ -1,0 +1,127 @@
+﻿@model Emlak.Models.Ilan
+
+
+<div class="col-md-3">
+    <br />
+    <!-- Filtreleme Kısmı -->
+
+    @* Bu şekilde Filtrele butonunu aktif hale getiriyoruz .. *@
+
+    @using (Html.BeginForm("Filtre", "Home", FormMethod.Get, new { @class = "form-horizontal" }))
+    {
+        
+           //İlk iki divde inputlaırn name ine acitondaki veridğimiz min max parametrelerini verdik ..
+            <div class="form-group yazı ">
+                <label for="inputEmail3" class="col-sm-4 control-label">En Az</label>
+                <div class="col-sm-8">
+                    <input type="text" name="min" class="form-control" placeholder="En Az(Fiyat)">
+                </div>
+            </div>
+            <div class="form-group yazı ">
+                <label for="inputEmail3" class="col-sm-4 control-label">En Çok</label>
+                <div class="col-sm-8">
+                    <input type="text" name="max" class="form-control" placeholder="En Çok(Fiyat)">
+                </div>
+            </div>
+            <div class="form-group yazı">
+                <label for="inputEmail3" class="col-sm-4 control-label">Şehir</label>
+                <div class="col-sm-8">
+                    @if (ViewBag.sehirlist != null)
+                    {
+                        @Html.DropDownListFor(m => m.SehirId, ViewBag.sehirlist as SelectList, "Sehir Seç", new { @class = "form-control" })
+                    }
+                </div>
+            </div>
+            <div class="form-group yazı">
+                <label for="inputEmail3" class="col-sm-4 control-label">Semt</label>
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(m => m.SemtId, new SelectList(""), "Semt Seç", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group yazı ">
+                <label for="inputEmail3" class="col-sm-4 control-label">Mahalle</label>
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(m => m.MahalleId, new SelectList(""), "Mahalle Seç", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group yazı ">
+                <label for="inputEmail3" class="col-sm-4 control-label">Durum</label>
+                <div class="col-sm-8">
+                    @if (ViewBag.durumlist != null)
+                    {
+                        @Html.DropDownListFor(m => m.DurumId, ViewBag.durumlist as SelectList, "Durum Seç", new { @class = "form-control" })
+                    }
+                </div>
+            </div>
+            <div class="form-group  yazı">
+                <label for="inputEmail3" class="col-sm-4 control-label">Tip</label>
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(m => m.TipId, new SelectList(""), "Tip Seç", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group yazı">
+                <label for="inputEmail3" class="col-sm-4 control-label"></label>
+                <div class="col-sm-8">
+                    <button type="submit" class="btn btn-warning btn-block"><i class="fa fa-search" aria-hidden="true"></i> FİLTRELE </button>
+                </div>
+            </div>
+
+
+    }
+</div>
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#SehirId").change(function () {
+            var sehirid = $(this).val();
+            debugger
+            $.ajax({
+                type: "Post",
+                url: "/Ilan/SemtGetir?SehirId=" + sehirid,
+                contentType: "html",
+                success: function (response) {
+                    debugger
+                    $("#SemtId").empty();
+                    $("#SemtId").append(response);
+                }
+            })
+        })
+    })
+</script>
+<script>
+    $(document).ready(function () {
+        $("#SemtId").change(function () {
+            var semtid = $(this).val();
+            debugger
+            $.ajax({
+                type: "Post",
+                url: "/Ilan/MahalleGetir?SemtId=" + semtid,
+                contentType: "html",
+                success: function (response) {
+                    debugger
+                    $("#MahalleId").empty();
+                    $("#MahalleId").append(response);
+                }
+            })
+        })
+    })
+</script>
+<script>
+    $(document).ready(function () {
+        $("#DurumId").change(function () {
+            var durumid = $(this).val();
+            debugger
+            $.ajax({
+                type: "Post",
+                url: "/Ilan/TipGetir?DurumId=" + durumid,
+                contentType: "html",
+                success: function (response) {
+                    debugger
+                    $("#TipId").empty();
+                    $("#TipId").append(response);
+                }
+            })
+        })
+    })
+</script>

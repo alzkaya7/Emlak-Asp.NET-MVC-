@@ -1,0 +1,118 @@
+﻿<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Emlak Sitesi</title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/Content/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/css/rütuş.css">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/Content/js/bootstrap.min.js"></script>
+    <!-- MDB icon -->
+    <link rel="icon" href="/mdb bootstrap/img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+
+</head>
+<body>
+    <header>
+        <!-- Menü çubuğu -->
+        <div class="container  ">
+            <br />
+            <nav class="navbar  navbar-inverse kapsayıcı ">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        @* Logo kısmı .. *@
+                        <a href="/Home/Index" class="navbar-brand yazı" style="padding:6px"><img src="~/Content/images/ANEmlak.png" width="140" height="50" /></a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                        @Html.Partial("Arama")
+
+
+                        @*<form class="navbar-form navbar-left">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Arama">
+                                </div>
+                                <button type="submit" class="btn btn-success"><i class="fa fa-search" aria-hidden="true"></i>  Ara</button>
+                            </form>*@
+
+                        <ul class="nav navbar-nav navbar-left yazı">
+                            <!-- Burada drodown listimize veri ekledik .. -->
+                            <li class=" yazı" style="color:black">
+                                @Html.Action("DurumAd1", "Tip")
+                                <ul class="dropdown-menu">
+                                    @* Action Adı/ Controller ismi *@
+
+                                    @Html.Action("DurumTip1", "Tip")
+                                </ul>
+                            </li>
+                            <!-- Burada dropdownlistimize veri ekledik .. -->
+                            <li class="dropdown" style="color:black">
+                                @Html.Action("DurumAd2", "Tip")
+                                <ul class="dropdown-menu">
+
+
+                                    @Html.Action("DurumTip2", "Tip")
+
+                                </ul>
+                            </li>
+                        </ul>
+                        @* Oluşturduğum LoginPartial sayfasını buraya ekledim .. *@
+                        @Html.Partial("LoginPartial")
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+
+
+        </div>
+
+
+    </header>
+    @RenderBody()
+
+    <footer>
+        <!-- Footer -->
+        <div class="container ">
+            <div class="row well" style="background-color:rgb(126,129,128)">
+                <div class="col-md-9">
+                    <h5 class="text-uppercase" style="color:white">İLETİŞİM</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/Account/Login" style="color:white"> GİRİŞ</a></li>
+                        <li><a href="/Account/Register" style="color:white"> ÜYE OL</a></li>
+                        @Html.Action("Durum", "Durum")
+                    </ul>
+                </div>
+                <div class="col-md-3 yazı">
+                    <h5 class="text-uppercase" style="color:white">SOSYAL MEDYA</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="https://www.facebook.com" style="color:white"> <img src="/Content/images/facebook.png" width="50" /></a>
+                            <a href="https://twitter.com" style="color:white"> <img src="/Content/images/twitter.png" width="50" /></a>
+                            <a href="https://www.youtube.com" style="color:white"> <img src="/Content/images/youtube.png" width="50" /></a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+</html>

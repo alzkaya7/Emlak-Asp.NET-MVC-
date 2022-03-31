@@ -1,0 +1,13 @@
+﻿@* Seçtiğimiz durumun tiplerini listeleme .. *@
+
+<option value="">Tip  Seç</option>
+
+@if (ViewBag.tiplistesi != null) 
+{
+
+    foreach (var item in ViewBag.tiplistesi)
+    {
+        <option value="@item.Value">@item.Text</option>
+    }
+
+}

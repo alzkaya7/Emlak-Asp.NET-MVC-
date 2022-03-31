@@ -1,0 +1,40 @@
+﻿body {
+    background-image: url(/Content/images/arka.jpg);
+    background: url(/Content/images/arka.jpg) no-repeat fixed center top;
+    background-size: cover;
+  
+    margin: 0;
+    padding: 0;
+}
+
+.kapsayıcı {
+    background-color:  #151D3B;
+    height:80px;
+    width:auto;
+    border-bottom-left-radius:40%;
+
+    border-bottom-right-radius:40%;
+
+
+
+}
+
+.yazı{
+
+    font-size:14px;
+    color:black;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+
+.yazı2 {
+    font-size: 12px;
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+.btn-btn danger:hover 
+{
+    background-color: #ff6a00;
+
+}

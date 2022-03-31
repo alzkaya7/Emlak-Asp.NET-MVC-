@@ -1,0 +1,149 @@
+﻿@model IEnumerable<Emlak.Models.Ilan>
+@{
+    ViewBag.Title = "IlanListesi";
+}
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-3">
+            <br />
+            <!--Filtreleme Kısmı-->
+            <form class="form-horizontal">
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label">En Az</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="En Az(Fiyat)">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label">En Çok</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="En Çok(Fiyat)">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Şehir</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Şehir">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Semt</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Semt">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Mahalle</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Mahalle">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Durum</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Durum">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Tip</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Tip">
+                    </div>
+                </div>
+
+
+
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label"></label>
+                    <div class="col-sm-6">
+                        <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-search" aria-hidden="true"></i> FİLTRELEME</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!--ilan Listesi-->
+        <br />
+        <div class="col-md-9">
+            <div class="thumbnail" style="width:845px;">
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/Admin/Index">Admin Sayfası</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Ilan Listesi</li>
+                    </ol>
+                </nav>
+
+                <br />
+                <table class="table">
+                    <tr>
+                        <th>
+                            Kullanıcı Adı
+                        </th>
+                        <th>
+                            Mahalle
+                        </th>
+                        <th>
+                            Tip
+                        </th>
+
+
+                        <th>
+                            Adres
+                        </th>
+
+                        <th>
+                            Şehir
+                        </th>
+                        <th>
+                            Semt
+                        </th>
+                        <th>
+                            Durum
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <button class="btn btn-primary">@item.UserName</button>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mahalle.MahalleAd)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tip.TipAd)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Adres)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mahalle.Semt.Sehir.SehirAd)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mahalle.Semt.SemtAd)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tip.Durum.DurumAd)
+                            </td>
+                            <td>
+
+                                <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.IlanId })"><i class="fa fa-trash" aria-hidden="true"></i> Sil</a>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+

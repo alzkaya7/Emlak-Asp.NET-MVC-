@@ -1,0 +1,34 @@
+﻿@model Emlak.Models.Tip
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tip</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Durum.DurumAd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Durum.DurumAd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipAd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipAd)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TipId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

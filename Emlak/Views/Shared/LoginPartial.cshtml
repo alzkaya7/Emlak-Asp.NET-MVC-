@@ -1,0 +1,56 @@
+﻿
+<ul class="nav navbar-nav navbar-right">
+    @if (Request.IsAuthenticated) //yani kullanıcı sisteme giriş yapmış ..
+    {
+        //admin için ..
+        if (this.User.IsInRole("admin"))
+        {
+            <li><a href="/Admin/Index" class="yazı" style="color: #E5E3C9">Admin Paneli</a></li>
+            <li><a href="/Ilan/Index" style="color: #E5E3C9">@User.Identity.Name</a></li>
+//Kullanıcı adını burdan çekiyorum .
+
+
+
+            <li><a href="/Account/Profil" class="  yazı " style="color: #E5E3C9">Profilim</a></li>
+            <div class="nav navbar-nav navbar-right" style="padding:10px">
+
+                <a href="/Account/LogOut" class="btn btn-danger" ><i class="fa fa-remove" aria-hidden="true"></i> Çıkış</a>
+                <a href="/Ilan/Create" class="btn btn-info"><i class="fa fa-bullhorn" aria-hidden="true"></i> İLAN VER</a>
+
+            </div>
+        }
+
+        else  //Admin olmayan ama kayıt yaptıran kullanıcılar için ..
+        {
+            <li><a href="/Ilan/Index" style="color:white">@User.Identity.Name</a></li>
+//Kullanıcı adını burdan çekiyorum .
+
+
+
+            <li><a href="/Account/Profil" style="color:white">Profilim</a></li>
+            <div class="nav navbar-nav navbar-right" style="padding:10px">
+
+                <a href="/Account/LogOut" class="btn btn-danger"><i class="fa fa-remove" aria-hidden="true"></i> Çıkış</a>
+                <a href="/Ilan/Create" class="btn btn-info"><i class="fa fa-bullhorn" aria-hidden="true"></i> İLAN VER</a>
+
+            </div>
+        }
+    }
+    else
+    {
+
+        //Sisteme kayıt olmayan kullanıcılar için
+        <div class="nav navbar-nav navbar-right" style="padding:10px">
+
+            <!-- Fa icon sitesinden aldığımız button ikonlarını butonlarımızın soluna yerleştirdik .. -->
+            <!-- https://fontawesome.com/v4/icons/ -->
+
+            <a href="/Account/Register" class="btn btn-primary"><i class="fa fa-users" aria-hidden="true"></i> Üye Ol</a>
+            <a href="/Account/Login" class="btn btn-success"><i class="fa fa-sign-in" aria-hidden="true"></i> Giriş</a>
+            <a href="/Account/Login" class="btn btn-info"><i class="fa fa-bullhorn" aria-hidden="true"></i> İLAN VER</a>
+
+        </div>
+    }
+
+
+</ul>

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Emlak.Models.Ilan>
+
+@{ int i = 0; }
+
+@foreach (var item in Model)
+        {
+            i++;
+            var c = 1; //Bşalnagıçta ekranda bir resim gözüksün diye 1 değerini verdik ..
+
+            var active = i == 1 ? "active" : "";
+<div class="item @active">
+
+    @foreach (var rsm in ViewBag.imgs)
+    {
+        if (rsm.IlanId == item.IlanId) //Resimden gelen ilan ID ile İlandan Gelen İlAN ID BİRİBİRİNE EŞİT İSE ..
+        {
+            if (@c == 1)
+            {
+                <a href="/Home/Detay/@item.IlanId"><img src="/Content/images/@rsm.ResimAd" alt="..." style="width:1150px;height:400px;"></a>//Anasayfaki slidera resimleri getiriyoruz ..
+                c++;
+            }
+
+        }
+
+
+    }
+
+
+</div>
+
+
+
+}
