@@ -1,3 +1,17 @@
 # Emlak-Asp.NET-MVC-
 Emlak
-# ALi ÖZKAYA
+
+## KULLANILAN TEKNOLOJİLER
+
+---- ASP .NET  MVC 
+
+--- ASP.NET IDENTİTY
+
+--- BOOTSTRAP 
+
+--- HTML -CSS -JAVASCRİPT 
+
+-- JQUERY 
+
+-- MSSQL 
+
